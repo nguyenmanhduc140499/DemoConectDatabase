@@ -14,6 +14,8 @@ namespace DemoConectDatabase.Models
 
         public DbSet<Student> Student { get; set; }
         public DbSet<Person> Persons { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
