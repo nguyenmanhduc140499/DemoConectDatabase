@@ -129,6 +129,7 @@
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\StdNewController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -150,7 +151,7 @@
       <DependentUpon>202109140643200_crate_table_employee.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AutoGeneredKey.cs" />
+    <Compile Include="Models\StringProcess.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\LaptringquanlyDBcontext.cs" />
     <Compile Include="Models\Person.cs" />
@@ -205,6 +206,8 @@
     <Content Include="Views\Employees\Details.cshtml" />
     <Content Include="Views\Employees\Edit.cshtml" />
     <Content Include="Views\Employees\Index.cshtml" />
+    <Content Include="Views\StdNew\Index.cshtml" />
+    <Content Include="Views\StdNew\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

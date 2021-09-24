@@ -7,21 +7,20 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DemoConectDatabase.Models;
-using DemoConectDatabase.Models;
 
 namespace DemoConectDatabase.Controllers
 {
     public class PersonController : Controller
     {
         private LaptringquanlyDBcontext db = new LaptringquanlyDBcontext();
-        AutoGeneredKey atGKey = new AutoGeneredKey();
+        StringProcess atGKey = new StringProcess();
 
         // GET: Person
         public ActionResult Index()
         {
             //lấy giá trị bản ghi cuối cùng trong đối tượng person
             var perID = db.Persons.OrderByDescending(m => m.PersonID).FirstOrDefault().PersonID;
-            var newID = atGKey.GeneredKey(perID);
+            var newID = atGKey.AutoGeneredKey(perID);
             ViewBag.newPer = newID;
             return View(db.Persons.ToList());
         }
