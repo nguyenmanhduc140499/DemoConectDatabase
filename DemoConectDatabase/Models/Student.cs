@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace DemoConectDatabase.Models
 {
@@ -12,6 +13,7 @@ namespace DemoConectDatabase.Models
         [Required(ErrorMessage ="khong duoc de trong muc nay")]
         public string StudentID { get; set; }
         [Required]
+        [AllowHtml]
         public string StudentName { get; set; }
     }
 }
