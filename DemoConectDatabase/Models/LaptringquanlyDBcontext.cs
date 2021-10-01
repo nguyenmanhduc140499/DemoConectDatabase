@@ -26,5 +26,7 @@ namespace DemoConectDatabase.Models
             .Property(e => e.StudentName)
             .IsUnicode(false);
         }
+
+        public System.Data.Entity.DbSet<DemoConectDatabase.Models.Account> Accounts { get; set; }
     }
 }
