@@ -130,6 +130,7 @@
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PersonController.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\StdNewController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Global.asax.cs">
@@ -151,14 +152,24 @@
     <Compile Include="Migrations\202109140643200_crate_table_employee.Designer.cs">
       <DependentUpon>202109140643200_crate_table_employee.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202110050924359_add_column_Roles.cs" />
+    <Compile Include="Migrations\202110050924359_add_column_Roles.Designer.cs">
+      <DependentUpon>202110050924359_add_column_Roles.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202110051057138_add_column_Account.cs" />
+    <Compile Include="Migrations\202110051057138_add_column_Account.Designer.cs">
+      <DependentUpon>202110051057138_add_column_Account.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\PasswordEncrytion.cs" />
+    <Compile Include="Models\Roles.cs" />
     <Compile Include="Models\StringProcess.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\LaptringquanlyDBcontext.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\Student.cs" />
+    <Compile Include="Models\UserRoleProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -563,6 +574,12 @@
     <Content Include="Views\Student\Details.cshtml" />
     <Content Include="Views\Student\Edit.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Roles\Create.cshtml" />
+    <Content Include="Views\Roles\Delete.cshtml" />
+    <Content Include="Views\Roles\Details.cshtml" />
+    <Content Include="Views\Roles\Edit.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -592,6 +609,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202109140643200_crate_table_employee.resx">
       <DependentUpon>202109140643200_crate_table_employee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110050924359_add_column_Roles.resx">
+      <DependentUpon>202110050924359_add_column_Roles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202110051057138_add_column_Account.resx">
+      <DependentUpon>202110051057138_add_column_Account.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -9,6 +9,7 @@ using DemoConectDatabase.Models;
 
 namespace DemoConectDatabase.Controllers
 {
+    [Authorize]
     public class StudentController : Controller
     {
         // GET: Student

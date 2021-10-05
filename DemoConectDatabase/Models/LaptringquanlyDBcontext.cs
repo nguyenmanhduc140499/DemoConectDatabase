@@ -28,5 +28,6 @@ namespace DemoConectDatabase.Models
         }
 
         public System.Data.Entity.DbSet<DemoConectDatabase.Models.Account> Accounts { get; set; }
+        public System.Data.Entity.DbSet<DemoConectDatabase.Models.Roles> Roles { get; set; }
     }
 }
