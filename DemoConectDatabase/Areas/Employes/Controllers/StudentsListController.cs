@@ -23,6 +23,7 @@ namespace DemoConectDatabase.Areas.Employes.Controllers
             DataTable dt = ExcelProcess.ReadDataFromExcelFile(_path, false);
             return dt;
         }
+
         // GET: Employes/StudentsList
         public ActionResult Index()
         {
