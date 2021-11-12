@@ -126,6 +126,11 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeAdminController.cs" />
+    <Compile Include="Areas\Employes\Controllers\HomeEmpController.cs" />
+    <Compile Include="Areas\Employes\Controllers\StudentsListController.cs" />
+    <Compile Include="Areas\Employes\EmployesAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -152,18 +157,15 @@
     <Compile Include="Migrations\202109140643200_crate_table_employee.Designer.cs">
       <DependentUpon>202109140643200_crate_table_employee.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202110050924359_add_column_Roles.cs" />
-    <Compile Include="Migrations\202110050924359_add_column_Roles.Designer.cs">
-      <DependentUpon>202110050924359_add_column_Roles.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202110051057138_add_column_Account.cs" />
-    <Compile Include="Migrations\202110051057138_add_column_Account.Designer.cs">
-      <DependentUpon>202110051057138_add_column_Account.cs</DependentUpon>
+    <Compile Include="Migrations\202110081009233_Create_Table_Account_and_Role.cs" />
+    <Compile Include="Migrations\202110081009233_Create_Table_Account_and_Role.Designer.cs">
+      <DependentUpon>202110081009233_Create_Table_Account_and_Role.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\ExcelProcess.cs" />
     <Compile Include="Models\PasswordEncrytion.cs" />
-    <Compile Include="Models\Roles.cs" />
+    <Compile Include="Models\Role.cs" />
     <Compile Include="Models\StringProcess.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\LaptringquanlyDBcontext.cs" />
@@ -184,6 +186,16 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\ckeditor\ckeditor.pack" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\HomeAdmin\Index.cshtml" />
+    <Content Include="Areas\Employes\Views\web.config" />
+    <Content Include="Areas\Employes\Views\HomeEmp\Index.cshtml" />
+    <Content Include="Areas\Employes\Views\ViewStudentList.cshtml" />
+    <Content Include="Areas\Employes\Views\StudentsList\Create.cshtml" />
+    <Content Include="Areas\Employes\Views\StudentsList\Delete.cshtml" />
+    <Content Include="Areas\Employes\Views\StudentsList\Details.cshtml" />
+    <Content Include="Areas\Employes\Views\StudentsList\Edit.cshtml" />
+    <Content Include="Areas\Employes\Views\StudentsList\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
     <Content Include="Scripts\ckeditor\CHANGES.html" />
@@ -583,6 +595,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\Employes\Data\" />
+    <Folder Include="Areas\Employes\Views\Shared\" />
+    <Folder Include="uploadExcel\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -610,11 +627,8 @@
     <EmbeddedResource Include="Migrations\202109140643200_crate_table_employee.resx">
       <DependentUpon>202109140643200_crate_table_employee.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110050924359_add_column_Roles.resx">
-      <DependentUpon>202110050924359_add_column_Roles.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202110051057138_add_column_Account.resx">
-      <DependentUpon>202110051057138_add_column_Account.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202110081009233_Create_Table_Account_and_Role.resx">
+      <DependentUpon>202110081009233_Create_Table_Account_and_Role.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

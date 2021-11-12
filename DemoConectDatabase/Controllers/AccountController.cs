@@ -12,7 +12,6 @@ namespace DemoConectDatabase.Controllers
     // Kiem tra duong dan cos thuoc he thong hay k
     public class AccountController : Controller
     {
-        Account encry = new Account();
         LaptringquanlyDBcontext db = new LaptringquanlyDBcontext();
         [HttpGet]
         public ActionResult Register()
@@ -23,7 +22,7 @@ namespace DemoConectDatabase.Controllers
         {
             if (ModelState.IsValid)
             {
-                acc.UserPassword = encry.PasswordEncrytion(acc.UserPassword);
+                acc.PassWord = PasswordEncrytion(acc.PassWord);
                 db.Accounts.Add(acc);
                 db.SaveChanges();
                 return RedirectToAction("Login", "Account");
@@ -46,14 +45,14 @@ namespace DemoConectDatabase.Controllers
         [HttpPost]
         public ActionResult Login(Account acc, string returnUrl)
         {
-            try
+           // try
             {
-                if (!string.IsNullOrEmpty(acc.UserName) && !string.IsNullOrEmpty(acc.UserPassword))
+                if (!string.IsNullOrEmpty(acc.UserName) && !string.IsNullOrEmpty(acc.PassWord))
                 {
                     using (var db = new LaptringquanlyDBcontext())
                     {
-                        var passToMD5 = PassEncrytion(acc.UserPassword);
-                        var account = db.Accounts.Where(m => m.UserName.Equals(acc.UserName) && m.UserPassword.Equals(passToMD5)).Count();
+                        var passToMD5 = PassEncrytion(acc.PassWord);
+                        var account = db.Accounts.Where(m => m.UserName.Equals(acc.UserName) && m.PassWord.Equals(passToMD5)).Count();
                         if (account == 1)
                         {
                             FormsAuthentication.SetAuthCookie(acc.UserName, false);
@@ -66,18 +65,16 @@ namespace DemoConectDatabase.Controllers
                 }
                 ModelState.AddModelError("", "Username and password is required.");
             }
-            catch
-            {
-                ModelState.AddModelError("", "Hệ thống đang được bảo trì, vui lòng liên hệ với quản trị viên");
-            }
+            //catch
+            //{
+            //    ModelState.AddModelError("", "Hệ thống đang được bảo trì, vui lòng liên hệ với quản trị viên");
+            //}
             return View(acc);
         }
-
-        private object PassEncrytion(string userPassword)
+        private string PassEncrytion(string passWord)
         {
-            return FormsAuthentication.HashPasswordForStoringInConfigFile(userPassword.Trim(), "MD5");
+            return FormsAuthentication.HashPasswordForStoringInConfigFile(passWord.Trim(),"MD5");
         }
-
         //Ham xuat khoi chuong trinh
         public ActionResult LogOff()
         {
@@ -90,11 +87,11 @@ namespace DemoConectDatabase.Controllers
             {
                 if (CheckSession() == 1)
                 {
-                    return RedirectToAction("Index", "Home_Ad", new { Areas = "Admins" });
+                    return RedirectToAction("Index", "HomeAdmin", new { Areas = "Admin" });
                 }
                 else if (CheckSession() == 2)
                 {
-                    return RedirectToAction("Index", "Home_Le", new { Areas = "Lectures" });
+                    return RedirectToAction("Index", "HomeEmp", new { Areas = "Employes" });
                 }
             }
             if (Url.IsLocalUrl(returnUrl))
@@ -103,7 +100,7 @@ namespace DemoConectDatabase.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home_Ad");
+                return RedirectToAction("Index", "HomeAdmin");
             }
         }
         private int CheckSession()
@@ -128,6 +125,10 @@ namespace DemoConectDatabase.Controllers
                 }
             }
             return 0;
+        }
+        private string PasswordEncrytion(string userPassword)
+        {
+            return FormsAuthentication.HashPasswordForStoringInConfigFile(userPassword.Trim(), "MD5");
         }
     }
 }

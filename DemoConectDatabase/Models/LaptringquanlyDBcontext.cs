@@ -15,7 +15,9 @@ namespace DemoConectDatabase.Models
         public DbSet<Student> Student { get; set; }
         public DbSet<Person> Persons { get; set; }
         public DbSet<Employee> Employees { get; set; }
-        
+        public DbSet<Account> Accounts { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        //public DbSet<demo> Demos { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -27,7 +29,6 @@ namespace DemoConectDatabase.Models
             .IsUnicode(false);
         }
 
-        public System.Data.Entity.DbSet<DemoConectDatabase.Models.Account> Accounts { get; set; }
-        public System.Data.Entity.DbSet<DemoConectDatabase.Models.Roles> Roles { get; set; }
+        
     }
 }

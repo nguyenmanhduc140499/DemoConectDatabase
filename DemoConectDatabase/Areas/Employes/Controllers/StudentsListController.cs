@@ -1,23 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using DemoConectDatabase.Models;
 
-namespace DemoConectDatabase.Controllers
+namespace DemoConectDatabase.Areas.Employes.Controllers
 {
-    
-    public class StudentController : Controller
+    public class StudentsListController : Controller
     {
-        // GET: Student
-        LaptringquanlyDBcontext db = new LaptringquanlyDBcontext();
+        private LaptringquanlyDBcontext db = new LaptringquanlyDBcontext();
+        private DataTable CopyDataFromExcelFile(HttpPostedFileBase file)
+        {
+            string fileExtention = file.FileName.Substring(file.FileName.IndexOf("."));
+            string _fileName = "danh sach sinh vien" + fileExtention;
+            string _path = Path.Combine(Server.MapPath("~/uploadExcel"), _fileName);
+            file.SaveAs(_path);
+            DataTable dt = ExcelProcess.ReadDataFromExcelFile(_path, false);
+            return dt;
+        }
+        // GET: Employes/StudentsList
         public ActionResult Index()
         {
             return View(db.Student.ToList());
         }
+
+        // GET: Employes/StudentsList/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -31,6 +43,31 @@ namespace DemoConectDatabase.Controllers
             }
             return View(student);
         }
+
+        // GET: Employes/StudentsList/Create
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Employes/StudentsList/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "StudentID,StudentName")] Student student)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Student.Add(student);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(student);
+        }
+
+        // GET: Employes/StudentsList/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -44,6 +81,10 @@ namespace DemoConectDatabase.Controllers
             }
             return View(student);
         }
+
+        // POST: Employes/StudentsList/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "StudentID,StudentName")] Student student)
@@ -56,6 +97,8 @@ namespace DemoConectDatabase.Controllers
             }
             return View(student);
         }
+
+        // GET: Employes/StudentsList/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -70,7 +113,7 @@ namespace DemoConectDatabase.Controllers
             return View(student);
         }
 
-        // POST: Employees/Delete/5
+        // POST: Employes/StudentsList/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
@@ -80,21 +123,14 @@ namespace DemoConectDatabase.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        public ActionResult Create()
+
+        protected override void Dispose(bool disposing)
         {
-            return View();
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(Student std)
-        {
-            if (ModelState.IsValid)
+            if (disposing)
             {
-                db.Student.Add(std);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                db.Dispose();
             }
-            return View();
+            base.Dispose(disposing);
         }
     }
 }

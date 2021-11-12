@@ -27,7 +27,7 @@ namespace DemoConectDatabase.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Roles roles = db.Roles.Find(id);
+            Role roles = db.Roles.Find(id);
             if (roles == null)
             {
                 return HttpNotFound();
@@ -46,7 +46,7 @@ namespace DemoConectDatabase.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "RoleID,RoleName")] Roles roles)
+        public ActionResult Create([Bind(Include = "RoleID,RoleName")] Role roles)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace DemoConectDatabase.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Roles roles = db.Roles.Find(id);
+            Role roles = db.Roles.Find(id);
             if (roles == null)
             {
                 return HttpNotFound();
@@ -78,7 +78,7 @@ namespace DemoConectDatabase.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "RoleID,RoleName")] Roles roles)
+        public ActionResult Edit([Bind(Include = "RoleID,RoleName")] Role roles)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +96,7 @@ namespace DemoConectDatabase.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Roles roles = db.Roles.Find(id);
+            Role roles = db.Roles.Find(id);
             if (roles == null)
             {
                 return HttpNotFound();
@@ -109,7 +109,7 @@ namespace DemoConectDatabase.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Roles roles = db.Roles.Find(id);
+            Role roles = db.Roles.Find(id);
             db.Roles.Remove(roles);
             db.SaveChanges();
             return RedirectToAction("Index");

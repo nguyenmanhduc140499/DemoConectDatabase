@@ -7,13 +7,13 @@ namespace DemoConectDatabase.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class add_column_Roles : IMigrationMetadata
+    public sealed partial class Create_Table_Account_and_Role : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(add_column_Roles));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Create_Table_Account_and_Role));
         
         string IMigrationMetadata.Id
         {
-            get { return "202110050924359_add_column_Roles"; }
+            get { return "202110081009233_Create_Table_Account_and_Role"; }
         }
         
         string IMigrationMetadata.Source
