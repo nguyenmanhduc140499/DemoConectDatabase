@@ -11,27 +11,35 @@ using System.Web;
 using System.Web.Mvc;
 using DemoConectDatabase.Models;
 
-namespace DemoConectDatabase.Areas.Employes.Controllers
+namespace DemoConectDatabase.Controllers
 {
     public class StudentsListController : Controller
     {
         private LaptringquanlyDBcontext db = new LaptringquanlyDBcontext();
-        private DataTable CopyDataFromExcelFile(HttpPostedFileBase file)
+        ExcelProcess excelPro = new ExcelProcess();
+        public DataTable CopyDataFromExcelFile(HttpPostedFileBase file)
         {
             string fileExtention = file.FileName.Substring(file.FileName.IndexOf("."));
             string _fileName = "danh sach sinh vien" + fileExtention;
             string _path = Path.Combine(Server.MapPath("~/uploadExcel"), _fileName);
             file.SaveAs(_path);
-            DataTable dt = ExcelProcess.ReadDataFromExcelFile(_path, false);
+            DataTable dt = excelPro.ReadDataFromExcelFile(_path, true);
             return dt;
         }
 
         // GET: Employes/StudentsList
         public ActionResult Index()
         {
-            return View(db.Student.ToList());
+            return View();
         }
+        [HttpPost]
 
+        public ActionResult Index(HttpPostedFileBase file)
+        {
+            DataTable dt = CopyDataFromExcelFile(file);
+            OverWriteFastData(dt);
+            return RedirectToAction("Index", "Student");
+        }
         // GET: Employes/StudentsList/Details/5
         public ActionResult Details(string id)
         {
@@ -127,14 +135,9 @@ namespace DemoConectDatabase.Areas.Employes.Controllers
             return RedirectToAction("Index");
         }
 
-        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["LaptringquanlyDBcontext"].ConnectionString);
-        private void OverWriteFastData(int? StudentID)
-        {
-            // Tạo table chứa dữ liệu
-            //Doc du lieu tu file excel do vao dt
-            DataTable dt = new DataTable();
-            dt = CopyDataFromExcelFile();
-            // Mapping cá column trong datatable và các column trong CSDl
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["LaptrinhquanlyDBContext"].ConnectionString);
+        private void OverWriteFastData(DataTable dt)
+        {   
             SqlBulkCopy bulkCopy = new SqlBulkCopy(con);
             bulkCopy.DestinationTableName = "Student";
             bulkCopy.ColumnMappings.Add(0, "StudentID");

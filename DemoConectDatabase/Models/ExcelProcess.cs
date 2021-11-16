@@ -11,7 +11,7 @@ namespace DemoConectDatabase.Models
 {
     public class ExcelProcess
     {
-        public static DataTable ReadDataFromExcelFile(string filepath, bool removeRow0)
+        public  DataTable ReadDataFromExcelFile(string filepath, bool removeRow0)
         {
             string connectionString = "";
             string fileExtention = filepath.Substring(filepath.Length - 4).ToLower();

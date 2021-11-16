@@ -29,6 +29,6 @@ namespace DemoConectDatabase.Models
             .IsUnicode(false);
         }
 
-        
+        public System.Data.Entity.DbSet<DemoConectDatabase.Models.KhachHang> KhachHangs { get; set; }
     }
 }

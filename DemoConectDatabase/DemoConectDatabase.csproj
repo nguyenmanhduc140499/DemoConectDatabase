@@ -129,7 +129,8 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeAdminController.cs" />
     <Compile Include="Areas\Employes\Controllers\HomeEmpController.cs" />
-    <Compile Include="Areas\Employes\Controllers\StudentsListController.cs" />
+    <Compile Include="Controllers\KhachHangsController.cs" />
+    <Compile Include="Controllers\StudentsListController.cs" />
     <Compile Include="Areas\Employes\EmployesAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EmployeesController.cs" />
@@ -161,9 +162,14 @@
     <Compile Include="Migrations\202110081009233_Create_Table_Account_and_Role.Designer.cs">
       <DependentUpon>202110081009233_Create_Table_Account_and_Role.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111160907373_table_Khachhang.cs" />
+    <Compile Include="Migrations\202111160907373_table_Khachhang.Designer.cs">
+      <DependentUpon>202111160907373_table_Khachhang.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\ExcelProcess.cs" />
+    <Compile Include="Models\KhachHang.cs" />
     <Compile Include="Models\PasswordEncrytion.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\StringProcess.cs" />
@@ -190,12 +196,6 @@
     <Content Include="Areas\Admin\Views\HomeAdmin\Index.cshtml" />
     <Content Include="Areas\Employes\Views\web.config" />
     <Content Include="Areas\Employes\Views\HomeEmp\Index.cshtml" />
-    <Content Include="Areas\Employes\Views\ViewStudentList.cshtml" />
-    <Content Include="Areas\Employes\Views\StudentsList\Create.cshtml" />
-    <Content Include="Areas\Employes\Views\StudentsList\Delete.cshtml" />
-    <Content Include="Areas\Employes\Views\StudentsList\Details.cshtml" />
-    <Content Include="Areas\Employes\Views\StudentsList\Edit.cshtml" />
-    <Content Include="Areas\Employes\Views\StudentsList\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
     <Content Include="Scripts\ckeditor\CHANGES.html" />
@@ -592,6 +592,12 @@
     <Content Include="Views\Roles\Edit.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\StudentsList\Index.cshtml" />
+    <Content Include="Views\KhachHangs\Create.cshtml" />
+    <Content Include="Views\KhachHangs\Delete.cshtml" />
+    <Content Include="Views\KhachHangs\Details.cshtml" />
+    <Content Include="Views\KhachHangs\Edit.cshtml" />
+    <Content Include="Views\KhachHangs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -629,6 +635,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202110081009233_Create_Table_Account_and_Role.resx">
       <DependentUpon>202110081009233_Create_Table_Account_and_Role.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111160907373_table_Khachhang.resx">
+      <DependentUpon>202111160907373_table_Khachhang.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
