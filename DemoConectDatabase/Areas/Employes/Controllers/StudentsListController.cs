@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -123,6 +125,23 @@ namespace DemoConectDatabase.Areas.Employes.Controllers
             db.Student.Remove(student);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["LaptringquanlyDBcontext"].ConnectionString);
+        private void OverWriteFastData(int? StudentID)
+        {
+            // Tạo table chứa dữ liệu
+            //Doc du lieu tu file excel do vao dt
+            DataTable dt = new DataTable();
+            dt = CopyDataFromExcelFile();
+            // Mapping cá column trong datatable và các column trong CSDl
+            SqlBulkCopy bulkCopy = new SqlBulkCopy(con);
+            bulkCopy.DestinationTableName = "Student";
+            bulkCopy.ColumnMappings.Add(0, "StudentID");
+            bulkCopy.ColumnMappings.Add(1, "StudentName");
+            con.Open();
+            bulkCopy.WriteToServer(dt);
+            con.Close();
         }
 
         protected override void Dispose(bool disposing)

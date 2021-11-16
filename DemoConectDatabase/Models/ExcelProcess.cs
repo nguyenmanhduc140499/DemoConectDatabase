@@ -54,20 +54,6 @@ namespace DemoConectDatabase.Models
             }
             return data;
         }
-        SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["LaptringquanlyDBcontext"].ConnectionString);
-        private void OverWriteFastData (int? StudentID)
-        {
-            // Tạo table chứa dữ liệu
-            DataTable dt = new DataTable();
-            // Mapping cá column trong datatable và các column trong CSDl
-            SqlBulkCopy bulkCopy = new SqlBulkCopy(con);
-            bulkCopy.DestinationTableName = "Student";
-            bulkCopy.ColumnMappings.Add(0, "StudentID");
-            bulkCopy.ColumnMappings.Add(1, "StudentName");
-            con.Open();
-            bulkCopy.WriteToServer(dt);
-            con.Close();
-
-        }
+        
     }
 }
