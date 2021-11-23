@@ -6,10 +6,11 @@ using System.Web;
 
 namespace DemoConectDatabase.Models
 {
-    public class Person
+    public class Category
     {
         [Key]
-        public string PersonID { get; set; }
-        public string PersonName { get; set; }
+        public string CategoryID { get; set; }
+        public string CategoryName { get; set; }
+        public ICollection<Product> Products { get; set; }
     }
 }

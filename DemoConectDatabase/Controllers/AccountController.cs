@@ -87,11 +87,11 @@ namespace DemoConectDatabase.Controllers
             {
                 if (CheckSession() == 1)
                 {
-                    return RedirectToAction("Index", "HomeAdmin", new { Areas = "Admin" });
+                    return RedirectToAction("Index", "HomeAdmin", new { Area = "Admin" });
                 }
                 else if (CheckSession() == 2)
                 {
-                    return RedirectToAction("Index", "HomeEmp", new { Areas = "Employes" });
+                    return RedirectToAction("Index", "HomeEmp", new { Area = "Employes" });
                 }
             }
             if (Url.IsLocalUrl(returnUrl))

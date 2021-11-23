@@ -1,0 +1,43 @@
+﻿@model DemoConectDatabase.Models.Children
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Children</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PeopleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PeopleName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChildrenID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChildrenID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Age)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.PeopleID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

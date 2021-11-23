@@ -6,10 +6,10 @@ using System.Web;
 
 namespace DemoConectDatabase.Models
 {
-    public class Person
+    public class Peopleinheritance
     {
         [Key]
-        public string PersonID { get; set; }
-        public string PersonName { get; set; }
+        public string PeopleID { get; set; }
+        public string PeopleName { get; set; }
     }
 }

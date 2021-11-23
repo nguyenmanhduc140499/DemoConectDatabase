@@ -129,7 +129,11 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeAdminController.cs" />
     <Compile Include="Areas\Employes\Controllers\HomeEmpController.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\ChildrenController.cs" />
     <Compile Include="Controllers\KhachHangsController.cs" />
+    <Compile Include="Controllers\PeopleinheritancesController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\StudentsListController.cs" />
     <Compile Include="Areas\Employes\EmployesAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -166,11 +170,23 @@
     <Compile Include="Migrations\202111160907373_table_Khachhang.Designer.cs">
       <DependentUpon>202111160907373_table_Khachhang.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111230722158_Table_People_Children.cs" />
+    <Compile Include="Migrations\202111230722158_Table_People_Children.Designer.cs">
+      <DependentUpon>202111230722158_Table_People_Children.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111230729107_Table_Pro_Cate.cs" />
+    <Compile Include="Migrations\202111230729107_Table_Pro_Cate.Designer.cs">
+      <DependentUpon>202111230729107_Table_Pro_Cate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Account.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\ExcelProcess.cs" />
     <Compile Include="Models\KhachHang.cs" />
     <Compile Include="Models\PasswordEncrytion.cs" />
+    <Compile Include="Models\children.cs" />
+    <Compile Include="Models\Peopleinheritance.cs" />
+    <Compile Include="Models\Product.cs" />
     <Compile Include="Models\Role.cs" />
     <Compile Include="Models\StringProcess.cs" />
     <Compile Include="Models\Employee.cs" />
@@ -598,6 +614,26 @@
     <Content Include="Views\KhachHangs\Details.cshtml" />
     <Content Include="Views\KhachHangs\Edit.cshtml" />
     <Content Include="Views\KhachHangs\Index.cshtml" />
+    <Content Include="Views\Categories\Create.cshtml" />
+    <Content Include="Views\Categories\Delete.cshtml" />
+    <Content Include="Views\Categories\Details.cshtml" />
+    <Content Include="Views\Categories\Edit.cshtml" />
+    <Content Include="Views\Categories\Index.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
+    <Content Include="Views\Peopleinheritances\Create.cshtml" />
+    <Content Include="Views\Peopleinheritances\Delete.cshtml" />
+    <Content Include="Views\Peopleinheritances\Details.cshtml" />
+    <Content Include="Views\Peopleinheritances\Edit.cshtml" />
+    <Content Include="Views\Peopleinheritances\Index.cshtml" />
+    <Content Include="Views\Children\Create.cshtml" />
+    <Content Include="Views\Children\Delete.cshtml" />
+    <Content Include="Views\Children\Details.cshtml" />
+    <Content Include="Views\Children\Edit.cshtml" />
+    <Content Include="Views\Children\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -605,6 +641,7 @@
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Areas\Employes\Data\" />
     <Folder Include="Areas\Employes\Views\Shared\" />
+    <Folder Include="Models\Process\" />
     <Folder Include="uploadExcel\" />
   </ItemGroup>
   <ItemGroup>
@@ -638,6 +675,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111160907373_table_Khachhang.resx">
       <DependentUpon>202111160907373_table_Khachhang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111230722158_Table_People_Children.resx">
+      <DependentUpon>202111230722158_Table_People_Children.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111230729107_Table_Pro_Cate.resx">
+      <DependentUpon>202111230729107_Table_Pro_Cate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

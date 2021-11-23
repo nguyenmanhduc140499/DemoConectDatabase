@@ -1,0 +1,46 @@
+﻿@model IEnumerable<DemoConectDatabase.Models.Children>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.PeopleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChildrenID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PeopleName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChildrenID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Age)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PeopleID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PeopleID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PeopleID })
+        </td>
+    </tr>
+}
+
+</table>

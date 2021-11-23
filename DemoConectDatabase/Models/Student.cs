@@ -16,5 +16,6 @@ namespace DemoConectDatabase.Models
         [Required]
         [AllowHtml]
         public string StudentName { get; set; }
+        //public ICollection<Account> Accounts { get; set; }
     }
 }

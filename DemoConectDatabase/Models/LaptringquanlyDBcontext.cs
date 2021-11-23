@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -17,7 +18,11 @@ namespace DemoConectDatabase.Models
         public DbSet<Employee> Employees { get; set; }
         public DbSet<Account> Accounts { get; set; }
         public DbSet<Role> Roles { get; set; }
-        //public DbSet<demo> Demos { get; set; }
+        public DbSet<Children> Childrens { get; set; }
+        public DbSet<Peopleinheritance> Peopleinheritances { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Product> Products { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
